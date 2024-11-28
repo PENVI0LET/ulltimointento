@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del PQR</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .card-body strong {
+            color: #333;
+        }
+
+        .btn-secondary {
+            background-color: #ffc107;
+            border: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ffeb3b;
+        }
+
+        .form-control-plaintext {
+            color: #444;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Figuras decorativas */
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .shape.one {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            left: 20px;
+        }
+
+        .shape.two {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            right: 50px;
+        }
+
+        .shape.three {
+            width: 350px;
+            height: 350px;
+            top: 10%;
+            left: 90%;
+            transform: translate(-50%, -50%);
+        }
+
+        .shape.four {
+            width: 250px;
+            height: 250px;
+            top: 10%;
+            right: 20%;
+        }
+
+        .shape.five {
+            width: 180px;
+            height: 180px;
+            bottom: 15%;
+            left: 10%;
+        }
+
+        .shape.six {
+            width: 100px;
+            height: 100px;
+            top: 75%;
+            left: 15%;
+        }
+
+        .shape.seven {
+            width: 220px;
+            height: 220px;
+            bottom: 5%;
+            left: 40%;
+        }
+
+        .shape.eight {
+            width: 180px;
+            height: 180px;
+            top: 60%;
+            right: 10%;
+        }
+
+        .shape.nine {
+            width: 250px;
+            height: 250px;
+            top: 20%;
+            left: 5%;
+        }
+
+        .shape.ten {
+            width: 200px;
+            height: 200px;
+            bottom: 65%;
+            right: 40%;
+        }
+		
+		/* Ajusta los elementos principales para que queden encima */
+									.navbar, .hero, footer,.card-header , .table, .form-control.form-group , .btn-primary , .btn-secondary {
+									    position: relative;
+									    z-index: 10;
+									}
+									
+    </style>
+</head>
+<body>
+    <!-- Figuras decorativas -->
+    <div class="shape one"></div>
+    <div class="shape two"></div>
+    <div class="shape three"></div>
+    <div class="shape four"></div>
+    <div class="shape five"></div>
+    <div class="shape six"></div>
+    <div class="shape seven"></div>
+    <div class="shape eight"></div>
+    <div class="shape nine"></div>
+    <div class="shape ten"></div>
+
+    <div class="container">
+        <h1 class="mb-4 text-center">Detalles del PQR</h1>
+        
+        <div class="card">
+            <div class="card-body">
+                <!-- Tipo de PQR -->
+                <div class="mb-3">
+                    <strong>Tipo:</strong>
+                    <p class="form-control-plaintext" th:text="${pqr.tipo}"></p>
+                </div>
+
+                <!-- Descripción -->
+                <div class="mb-3">
+                    <strong>Descripción:</strong>
+                    <p class="form-control-plaintext" th:text="${pqr.descripcion}"></p>
+                </div>
+
+                <!-- Información adicional -->
+                <div class="mb-3">
+                    <strong>Nombre:</strong>
+                    <p class="form-control-plaintext" th:text="${pqr.nombre}"></p>
+                </div>
+                <div class="mb-3">
+                    <strong>Correo:</strong>
+                    <p class="form-control-plaintext" th:text="${pqr.correo}"></p>
+                </div>
+                <div class="mb-3">
+                    <strong>Cédula:</strong>
+                    <p class="form-control-plaintext" th:text="${pqr.cedula}"></p>
+                </div>
+                <div class="mb-3">
+                    <strong>Teléfono:</strong>
+                    <p class="form-control-plaintext" th:text="${pqr.telefono}"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a href="/pqr/lista" class="btn btn-secondary">Volver a la lista</a>
+        </div>
+    </div>
+</body>
+</html>

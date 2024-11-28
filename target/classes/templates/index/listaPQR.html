@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de PQRs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+			background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        h1 {
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #ff9800;
+            border: none;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffc107;
+        }
+
+        .table {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #d32f2f;
+            color: #fff;
+            text-align: center;
+        }
+
+        .table td {
+            color: #333;
+        }
+
+        /* Figuras decorativas */
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .shape.one {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            left: 20px;
+        }
+
+        .shape.two {
+            width: 300px;
+            height: 300px;
+            bottom: -100px;
+            right: 50px;
+        }
+
+        .shape.three {
+            width: 250px;
+            height: 250px;
+            top: 20%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+        }
+
+        .shape.four {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            left: 10%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Figuras decorativas -->
+    <div class="shape one"></div>
+    <div class="shape two"></div>
+    <div class="shape three"></div>
+    <div class="shape four"></div>
+
+    <div class="container">
+        <h1>Lista de PQRs</h1>
+        <a href="/pqr/crear" class="btn btn-primary mb-3">Crear PQR</a>
+		<a th:href="@{/gerente/index}" class="btn btn-primary mb-3">Ir al Panel</a>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pqr : ${pqrList}">
+                    <td th:text="${pqr.id}"></td>
+                    <td th:text="${pqr.tipo}"></td>
+                    <td th:text="${pqr.descripcion}"></td>
+                    <td class="text-center">
+                        <a th:href="@{/pqr/ver/{id}(id=${pqr.id})}" class="btn btn-info btn-sm">Ver</a>
+                        <a th:href="@{/pqr/eliminar/{id}(id=${pqr.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

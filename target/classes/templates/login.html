@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Restaurante</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .card-header {
+            background-color: rgb(255, 0, 0);
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-header h3 {
+            color: #fff;
+            margin: 0;
+        }
+
+        .btn-primary {
+            background-color: #ffc107;
+            border: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffeb3b;
+        }
+
+        label {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-control {
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+        }
+
+        .alert {
+            border-radius: 10px;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo img {
+            max-width: 100px;
+        }
+
+		    /* Figuras decorativas */
+		    .shape {
+		        position: absolute;
+		        background: rgba(255, 255, 255, 0.2);
+		        border-radius: 50%;
+		        z-index: 1;
+		    }
+
+		    .shape.one {
+		        width: 150px;
+		        height: 150px;
+		        top: -50px;
+		        left: 20px;
+		    }
+
+		    .shape.two {
+		        width: 300px;
+		        height: 300px;
+		        bottom: -100px;
+		        right: 50px;
+		    }
+
+		    .shape.three {
+		        width: 350px;
+		        height: 350px;
+		        top: 10%;
+		        left: 90%;
+		        transform: translate(-50%, -50%);
+		    }
+
+		    .shape.four {
+		        width: 250px;
+		        height: 250px;
+		        top: 10%;
+		        right: 20%;
+		    }
+
+		    .shape.five {
+		        width: 180px;
+		        height: 180px;
+		        bottom: 15%;
+		        left: 10%;
+		    }
+			.shape.six {
+			        width: 100px;
+			        height: 100px;
+			        top: 75%;
+			        left: 15%;
+			    }
+
+			    .shape.seven {
+			        width: 220px;
+			        height: 220px;
+			        bottom: 5%;
+			        left: 40%;
+			    }
+
+			    .shape.eight {
+			        width: 180px;
+			        height: 180px;
+			        top: 60%;
+			        right: 10%;
+			    }
+
+			    .shape.nine {
+			        width: 250px;
+			        height: 250px;
+			        top: 20%;
+			        left: 5%;
+			    }
+
+			    .shape.ten {
+			        width: 200px;
+			        height: 200px;
+			        bottom: 65%;
+			        right: 40%;
+			    }
+
+    </style>
+</head>
+<body>
+    <!-- Figuras decorativas -->
+	<div class="shape one"></div>
+	    <div class="shape two"></div>
+	    <div class="shape three"></div>
+	    <div class="shape five"></div>
+	    <div class="shape six"></div>
+	    <div class="shape seven"></div>
+	    <div class="shape eight"></div>
+	    <div class="shape nine"></div>
+	    <div class="shape ten"></div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h3>Iniciar Sesión</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="logo">
+                            <img src="/logo.svg" alt="Logo del Restaurante">
+                        </div>
+                        <!-- Mostrar mensaje de error si las credenciales son incorrectas -->
+                        <div th:if="${error}" class="alert alert-danger" role="alert">
+                            <span th:text="${error}"></span>
+                        </div>
+                        <!-- Formulario de inicio de sesión -->
+                        <form th:action="@{/auth/login}" method="post">
+                            <div class="form-group">
+                                <label for="nombreUsuario">Nombre de Usuario</label>
+                                <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" placeholder="Ingresa tu usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

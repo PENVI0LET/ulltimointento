@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Inventario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+	    body {
+			background: linear-gradient(135deg, #ff5722, #ff9800);
+	        color: #fff;
+	        font-family: 'Arial', sans-serif;
+	        min-height: 100vh;
+	        display: flex;
+	        justify-content: center;
+	        align-items: center;
+	        position: relative;
+	    }
+
+	    .card {
+	        border: none;
+	        border-radius: 15px;
+	        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+	        background: #fff;
+	        color: #333;
+	    }
+
+		.card-header {
+		    background-color: #d32f2f;
+		    color: #fff;
+		    font-weight: bold;
+		    text-align: center;
+		    border-top-left-radius: 15px;
+		    border-top-right-radius: 15px;
+
+		.form-control {
+		     border: 2px solid #2196f3;
+		     border-radius: 10px;
+		 }
+
+		 .btn-primary {
+		     background-color: #ffc107;
+		     border: none;
+		 }
+
+		 .btn-primary:hover {
+		     background-color: #ffeb3b;
+		 }
+	    }
+
+	    label {
+	        font-weight: bold;
+	    }
+
+		/* Figuras decorativas */
+		        .shape {
+		            position: absolute;
+		            background: rgba(255, 255, 255, 0.2);
+		            border-radius: 50%;
+		            z-index: 1;
+		        }
+
+		        .shape.one {
+		            width: 150px;
+		            height: 150px;
+		            top: -50px;
+		            left: 20px;
+		        }
+
+		        .shape.two {
+		            width: 300px;
+		            height: 300px;
+		            bottom: -100px;
+		            right: 50px;
+		        }
+
+		        .shape.three {
+		            width: 350px;
+		            height: 350px;
+		            top: 10%;
+		            left: 90%;
+		            transform: translate(-50%, -50%);
+		        }
+
+		        .shape.four {
+		            width: 250px;
+		            height: 250px;
+		            top: 10%;
+		            right: 20%;
+		        }
+
+		        .shape.five {
+		            width: 180px;
+		            height: 180px;
+		            bottom: 15%;
+		            left: 10%;
+		        }
+
+		        .shape.six {
+		            width: 100px;
+		            height: 100px;
+		            top: 75%;
+		            left: 15%;
+		        }
+
+		        .shape.seven {
+		            width: 220px;
+		            height: 220px;
+		            bottom: 5%;
+		            left: 40%;
+		        }
+
+		        .shape.eight {
+		            width: 180px;
+		            height: 180px;
+		            top: 60%;
+		            right: 10%;
+		        }
+
+		        .shape.nine {
+		            width: 250px;
+		            height: 250px;
+		            top: 20%;
+		            left: 5%;
+		        }
+
+		        .shape.ten {
+		            width: 200px;
+		            height: 200px;
+		            bottom: 65%;
+		            right: 40%;
+		        }
+				
+				/* Ajusta los elementos principales para que queden encima */
+						.navbar, .hero, footer,.card-header ,.card {
+						    position: relative;
+						    z-index: 10;
+						}
+		    </style>
+		</head>
+		<body>
+		    <!-- Figuras decorativas -->
+		    <div class="shape one"></div>
+		   >
+		    <div class="shape four"></div>
+		    <div class="shape five"></div>
+		    <div class="shape six"></div>
+		    <div class="shape seven"></div>
+		    <div class="shape eight"></div>
+		    <div class="shape nine"></div>
+		    <div class="shape ten"></div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Editar Inventario</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="/gestor/inventario/actualizar" method="POST">
+                            <input type="hidden" name="id" th:value="${inventario.id}">
+
+                            <div class="form-group">
+                                <label for="item">Item:</label>
+                                <input type="text" id="item" name="item" class="form-control" th:value="${inventario.item}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cantidad">Cantidad:</label>
+                                <input type="number" id="cantidad" name="cantidad" class="form-control" th:value="${inventario.cantidad}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Estado:</label><br>
+                                <div class="form-check">
+                                    <input type="radio" id="disponible" name="faltante" value="false" class="form-check-input" th:checked="${inventario.faltante == false}">
+                                    <label for="disponible" class="form-check-label">Disponible</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" id="faltante" name="faltante" value="true" class="form-check-input" th:checked="${inventario.faltante == true}">
+                                    <label for="faltante" class="form-check-label">Faltante</label>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary">Actualizar Inventario</button>
+                                <a href="/gestor/inventario" class="btn btn-secondary">Volver</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

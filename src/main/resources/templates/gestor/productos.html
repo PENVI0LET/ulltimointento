@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+    <!-- Agregar Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+			background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        h1 {
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary, .btn-danger {
+            border-radius: 10px;
+        }
+
+        .btn-primary {
+            background-color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .btn-danger {
+            background-color: #f44336;
+            border-color: #f44336;
+        }
+
+        .table th, .table td {
+            text-align: center;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #673ab7;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            color: #333;
+        }
+
+        .alert {
+            border-radius: 10px;
+        }					/* Figuras decorativas */
+						        .shape {
+						            position: absolute;
+						            background: rgba(255, 255, 255, 0.2);
+						            border-radius: 50%;
+						            z-index: 1;
+						        }
+
+						        .shape.one {
+						            width: 150px;
+						            height: 150px;
+						            top: -50px;
+						            left: 20px;
+						        }
+
+						        .shape.two {
+						            width: 300px;
+						            height: 300px;
+						            bottom: -100px;
+						            right: 50px;
+						        }
+
+						        .shape.three {
+						            width: 350px;
+						            height: 350px;
+						            top: 10%;
+						            left: 90%;
+						            transform: translate(-50%, -50%);
+						        }
+
+						        .shape.four {
+						            width: 250px;
+						            height: 250px;
+						            top: 10%;
+						            right: 20%;
+						        }
+
+						        .shape.five {
+						            width: 180px;
+						            height: 180px;
+						            bottom: 15%;
+						            left: 10%;
+						        }
+
+						        .shape.six {
+						            width: 100px;
+						            height: 100px;
+						            top: 75%;
+						            left: 15%;
+						        }
+
+						        .shape.seven {
+						            width: 220px;
+						            height: 220px;
+						            bottom: 5%;
+						            left: 40%;
+						        }
+
+						        .shape.eight {
+						            width: 180px;
+						            height: 180px;
+						            top: 60%;
+						            right: 10%;
+						        }
+
+						        .shape.nine {
+						            width: 250px;
+						            height: 250px;
+						            top: 20%;
+						            left: 5%;
+						        }
+
+						        .shape.ten {
+						            width: 200px;
+						            height: 200px;
+						            bottom: 65%;
+						            right: 40%;
+						        }
+								
+								/* Ajusta los elementos principales para que queden encima */
+										.navbar, .hero, footer,.card-header , .table, .form-control.form-group , .btn-primary {
+										    position: relative;
+										    z-index: 10;
+										}
+										
+			    </style>
+			</head>
+			<body>
+				<!-- Figuras decorativas -->
+						    <div class="shape one"></div>
+						    <div class="shape four"></div>
+						    <div class="shape five"></div>
+						    <div class="shape six"></div>
+						    <div class="shape seven"></div>
+						    <div class="shape eight"></div>
+						    <div class="shape nine"></div>
+						    <div class="shape ten"></div>
+    <div class="container">
+        <h1 class="text-center">Lista de Productos</h1>
+        <a th:href="@{/gestor/productos/nuevo}" class="btn btn-primary mb-3">Nuevo Producto</a>
+
+        <a class="btn btn-secondary mb-3" th:href="@{/gestor/dashboard}">Volver al Panel</a>
+
+        <!-- Formulario para filtrar productos -->
+        <form th:action="@{/gestor/productos}" method="get" class="mb-4">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="categoria">Filtrar por categoría:</label>
+                    <select name="categoriaId" id="categoria" class="form-control">
+                        <option value="">Seleccione una categoría</option>
+                        <!-- Llenar las opciones de categoría desde el modelo -->
+                        <option th:each="categoria : ${categorias}" 
+                                th:value="${categoria.id}" 
+                                th:text="${categoria.nombre}"></option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <button type="submit" class="btn btn-primary mt-4">Filtrar</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Mostrar mensajes -->
+        <div th:if="${error}" class="alert alert-danger" role="alert">
+            <p th:text="${error}"></p>
+        </div>
+        <div th:if="${success}" class="alert alert-success" role="alert">
+            <p th:text="${success}"></p>
+        </div>
+
+        <!-- Tabla de productos -->
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Categoria</th>
+                            <th>Disponibilidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="producto : ${productos}">
+                            <td th:text="${producto.nombre}"></td>
+                            <td th:text="${producto.precio}"></td>
+                            <td th:text="${producto.categoria.nombre}"></td>
+                            <td th:text="${producto.faltante ? 'Faltante' : 'Disponible'}"></td>
+                            <td>
+                                <!-- Enlace para editar -->
+                                <a th:href="@{/gestor/productos/editar/{id}(id=${producto.id})}" class="btn btn-warning btn-sm">Editar</a>
+
+                                <!-- Validación para la eliminación -->
+                                <form th:action="@{/gestor/productos/eliminar/{id}(id=${producto.id})}" method="get" class="d-inline">
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agregar jQuery y Bootstrap 4 JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce más sobre Sabor Imperial, el restaurante con los menús más variados y deliciosos de la ciudad.">
+    <title>Nosotros - Sabor Imperial</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            padding-top: 70px;
+        }
+
+        .navbar {
+            background-color: #d32f2f;
+        }
+
+        .navbar-brand img {
+            max-width: 70px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffeb3b !important;
+        }
+
+        .hero {
+            background: url('https://source.unsplash.com/1600x900/?fastfood') no-repeat center center;
+            background-size: cover;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        footer {
+            background-color: #d32f2f;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/logo_negro.svg" alt="Logo del Restaurante" width="100%">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+					                        <a class="nav-link" th:href="@{/}">Inicio</a>
+					                    </li>
+					                   
+					                    <li class="nav-item">
+											<a class="nav-link" th:href="@{/pqr/crear}">Contacto - PQR</a>
+					                    </li>
+					                    <li class="nav-item">
+					                        <a class="nav-link" th:href="@{/nosotros}">Sobre Nosotros</a>
+					                    </li>
+					                    <li class="nav-item">
+					                        <a class="nav-link" th:href="@{/login}">Login</a>
+					                    </li>
+					                </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Sección Sobre Nosotros -->
+    <div class="section bg-light">
+        <div class="container">
+            <h2>Nuestra Historia</h2>
+            <p>Sabor Imperial fue fundado en 2024 con la misión de ofrecer a nuestros clientes las mejores opciones en comida rápida de calidad. Desde nuestras primeras hamburguesas hasta las papas fritas crujientes, hemos buscado siempre innovar en el sabor y la presentación de nuestros platillos. Hoy, somos conocidos por tener uno de los menús más variados y deliciosos de la ciudad, con opciones que se adaptan a todos los gustos y necesidades.</p>
+        </div>
+    </div>
+
+    <!-- Sección Misión y Visión -->
+    <div class="section">
+        <div class="container">
+            <h2>Misión y Visión</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3>Misión</h3>
+                            <p>Brindar a nuestros clientes una experiencia única de comida rápida, ofreciendo opciones frescas, sabrosas y asequibles en un ambiente amigable y cálido. Buscamos ser el lugar de referencia para quienes buscan calidad, sabor y rapidez.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3>Visión</h3>
+                            <p>Convertirnos en la cadena de restaurantes de comida rápida más reconocida a nivel nacional, manteniendo nuestro compromiso con la calidad, la innovación y la satisfacción del cliente. Siempre atentos a las tendencias y necesidades de nuestros consumidores.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Nuestros Valores -->
+    <div class="section bg-light">
+        <div class="container">
+            <h2>Nuestros Valores</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Calidad</h4>
+                            <p>Nos aseguramos de que todos nuestros productos sean frescos y preparados con los mejores ingredientes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Rapidez</h4>
+                            <p>Sabemos que el tiempo es valioso, por eso ofrecemos un servicio rápido sin sacrificar la calidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Innovación</h4>
+                            <p>Siempre estamos innovando para ofrecer nuevas opciones a nuestros clientes y mantenernos a la vanguardia del mercado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Sabor Imperial. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

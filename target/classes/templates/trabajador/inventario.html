@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: rgba(211, 47, 47, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffeb3b !important;
+        }
+
+        .container {
+            margin-top: 2rem;
+        }
+
+        .inventory-section {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 2rem;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .table th {
+            background-color: #d32f2f;
+            color: #fff;
+            text-align: center;
+        }
+
+        .table tbody tr:hover {
+            background-color: #ffe0b2;
+        }
+
+        .btn {
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #d32f2f;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .shape.one {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            left: 20px;
+        }
+
+        .shape.three {
+            width: 350px;
+            height: 350px;
+            top: 10%;
+            left: 81%;
+            transform: translate(-50%, -50%);
+        }
+
+        .shape.five {
+            width: 250px;
+            height: 250px;
+            bottom: 20%;
+            right: 10%;
+            transform: translate(50%, 50%);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar, .inventory-section, footer {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <!-- Figuras decorativas -->
+    <div class="shape one"></div>
+    <div class="shape three"></div>
+    <div class="shape five"></div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/trabajador">
+                <i class="fas fa-boxes"></i> Inventario
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" th:href="@{/trabajador/productos}">Productos</a></li>
+									                    <li class="nav-item"><a class="nav-link" th:href="@{/trabajador/crear-pedido}">Crear Pedido</a></li>
+									                    <li class="nav-item"><a class="nav-link" th:href="@{/trabajador/listar-pedidos}">Lista de Pedidos</a></li>
+									                    <li class="nav-item"><a class="nav-link" th:href="@{/trabajador/inventario}">Inventario</a></li>
+														<a class="nav-link" href="/auth/logout">Cerrar Sesión</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de inventario -->
+    <div class="container">
+        <div class="inventory-section">
+            <h2 class="text-center mb-4">Inventario</h2>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Item</th>
+                        <th>Cantidad</th>
+                        <th>Faltante</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${inventario}">
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.item}"></td>
+                        <td th:text="${item.cantidad}"></td>
+                        <td th:text="${item.faltante} ? 'Sí' : 'No'"></td>
+                        <td>
+                            <form th:action="@{/trabajador/inventario/marcar-faltante/{id}(id=${item.id})}" method="post" th:if="${!item.faltante}">
+                                <button class="btn btn-warning">Marcar como Faltante</button>
+                            </form>
+                            <span th:if="${item.faltante}" class="text-success">Faltante</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="/trabajador/index" class="btn btn-primary">Volver al Panel</a>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Inventario. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

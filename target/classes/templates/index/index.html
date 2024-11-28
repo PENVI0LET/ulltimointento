@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenido a nuestro restaurante de comida rápida. Descubre nuestras deliciosas hamburguesas, papas fritas y más.">
+    <title>Sabor Imperial</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: #d32f2f;
+        }
+
+        .navbar-brand img {
+            max-width: 70px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffeb3b !important;
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .hero .btn {
+            margin-top: 2rem;
+            background-color: #ffc107;
+            border: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .hero .btn:hover {
+            background-color: #ffeb3b;
+        }
+
+       
+
+        footer {
+            background-color: #d32f2f;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+			max-height: 50px;
+        }
+
+ /* Figuras decorativas */
+ /* Figuras decorativas */
+.shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2); /* Transparencia para un efecto sutil */
+    border-radius: 50%; /* Forma circular */
+    z-index: 0; /* Detrás del contenido principal */
+    pointer-events: none; /* Evita interferencias con las interacciones del usuario */
+}
+
+.shape.one {
+    width: 150px;
+    height: 150px;
+    top: -50px; /* Coloca la figura en la parte superior izquierda */
+    left: 20px; /* Ajusta la posición horizontal */
+}
+
+
+
+.shape.three {
+    width: 350px;
+    height: 350px;
+    top: 10%; /* Coloca la figura cerca del centro superior */
+    left: 81%; /* Ajusta la posición horizontal */
+    transform: translate(-50%, -50%); /* Centra la figura en su punto */
+}
+
+.shape.four {
+    width: 200px;
+    height: 200px;
+    top: 70%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.15); /* Más transparencia para un contraste diferente */
+}
+
+.shape.five {
+    width: 250px;
+    height: 250px;
+    bottom: 20%;
+    right: 10%;
+    transform: translate(50%, 50%);
+    background: rgba(255, 255, 255, 0.3); /* Un poco más opaco */
+}
+
+.shape.six {
+			        width: 100px;
+			        height: 100px;
+			        top: 75%;
+			        left: 15%;
+			    }
+
+			    .shape.seven {
+			        width: 220px;
+			        height: 220px;
+			        bottom: 5%;
+			        left: 40%;
+			    }
+
+			    .shape.eight {
+			        width: 180px;
+			        height: 180px;
+			        top: 60%;
+			        right: 10%;
+			    }
+
+			    .shape.nine {
+			        width: 250px;
+			        height: 250px;
+			        top: 20%;
+			        left: 5%;
+			    }
+
+			    .shape.ten {
+			        width: 200px;
+			        height: 200px;
+			        bottom: 65%;
+			        right: 40%;
+			    }
+
+/* Ajusta los elementos principales para que queden encima */
+.navbar, .hero, footer {
+    position: relative;
+    z-index: 10;
+}
+
+    </style>
+</head>
+<body>
+     <!-- Figuras decorativas -->
+	<div class="shape one"></div>
+    <div class="shape three"></div>
+    <div class="shape five"></div>
+    <div class="shape six"></div>
+    <div class="shape seven"></div>
+    <div class="shape eight"></div>
+    <div class="shape nine"></div>
+    <div class="shape ten"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">
+<img src="/logo_negro.svg" alt="Logo del Restaurante" width="200%" height="200%">            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Inicio</a>
+                    </li>
+                   
+                    <li class="nav-item">
+						<a class="nav-link" th:href="@{/pqr/crear}">Contacto - PQR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/nosotros}">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="hero">
+        <div>
+            <h1>Bienvenido a Restaurante Rápido</h1>
+            <p>Disfruta de las mejores hamburguesas, papas fritas y mucho más. Calidad y sabor en cada bocado.</p>
+			<a href="/Menu_Restaurante.pdf" class="btn btn-lg" download="Menu_Restaurante.pdf">Ver Menú</a>
+        </div>
+    </div>
+
+    <div id="menu" class="container py-5">
+        <h2 class="text-center mb-4">Nuestro Menú</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://i.revistapym.com.co/old/2016/10/las-comidas-rapidas-1.png?w=728" class="card-img-top" alt="Hamburguesa" height="150px">
+                    
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://i.revistapym.com.co/old/2016/10/las-comidas-rapidas-1.png?w=728" class="card-img-top" alt="Hamburguesa" height="150px">
+                    
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://i.revistapym.com.co/old/2016/10/las-comidas-rapidas-1.png?w=728" class="card-img-top" alt="Hamburguesa" height="150px">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sabor Imperial. Todos los derechos reservados.</p>
+    </footer>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

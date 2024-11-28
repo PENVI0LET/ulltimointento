@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear PQR</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: #d32f2f;
+        }
+
+        .navbar-brand img {
+            max-width: 70px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffeb3b !important;
+        }
+
+        .hero {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .hero .btn {
+            margin-top: 2rem;
+            background-color: #ffc107;
+            border: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .hero .btn:hover {
+            background-color: #ffeb3b;
+        }
+
+        footer {
+            background-color: #d32f2f;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            max-height: 50px;
+        }
+
+        /* Figuras decorativas */
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .shape.one { width: 150px; height: 150px; top: -50px; left: 20px; }
+        .shape.three { width: 350px; height: 350px; top: 10%; left: 81%; transform: translate(-50%, -50%); }
+        .shape.five { width: 250px; height: 250px; bottom: 20%; right: 10%; transform: translate(50%, 50%); }
+        .shape.six { width: 100px; height: 100px; top: 75%; left: 15%; }
+        .shape.seven { width: 220px; height: 220px; bottom: 5%; left: 40%; }
+        .shape.eight { width: 180px; height: 180px; top: 60%; right: 10%; }
+        .shape.nine { width: 250px; height: 250px; top: 20%; left: 5%; }
+        .shape.ten { width: 200px; height: 200px; bottom: 65%; right: 40%; }
+
+        .navbar, .hero, footer {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Mejoras en el formulario */
+        .card {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ff9800;
+            color: rgb(0, 0, 0);
+        }
+
+        .form-control:focus {
+            border-color: #ffc107;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 5px rgba(255, 193, 7, 0.7);
+        }
+
+        .btn-primary {
+            background-color: #ff5722;
+            border-color: #ff5722;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff9800;
+        }
+
+        .btn-secondary {
+            background-color: #ffc107;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ffeb3b;
+        }
+
+        .alert {
+            background-color: #388e3c;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        h1 {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+		
+		
+		/* Ajusta los elementos principales para que queden encima */
+								.navbar, .hero, footer,.card-header , .table, .form-control.form-group , .btn-primary , .card{
+								    position: relative;
+								    z-index: 10;
+								}
+    </style>
+</head>
+<body>
+    <!-- Figuras decorativas -->
+    <div class="shape one"></div>
+    <div class="shape three"></div>
+    <div class="shape five"></div>
+    <div class="shape six"></div>
+    <div class="shape seven"></div>
+    <div class="shape eight"></div>
+    <div class="shape nine"></div>
+    <div class="shape ten"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/logo_negro.svg" alt="Logo" width="200%" height="200%">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pqr/crear">Contacto - PQR</a>
+                    </li>
+                    <li class="nav-item">
+						<a class="nav-link" th:href="@{/nosotros}">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mb-4 text-center">Crear PQR</h1>
+
+        <!-- Mostrar mensaje si está presente -->
+        <div th:if="${mensaje != null}" class="alert alert-success" role="alert">
+            <span th:text="${mensaje}"></span>
+        </div>
+
+
+        <div class="card">
+            <div class="card-body">
+                <form action="/pqr/crear" method="post">
+                    <div class="form-group">
+                        <label for="tipo" >Tipo:</label>
+                        <select id="tipo" name="tipo" class="form-control" required>
+                            <option value="" disabled selected>Seleccione un tipo</option>
+                            <option value="Petición">Petición</option>
+                            <option value="Queja">Queja</option>
+                            <option value="Reclamo">Reclamo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo:</label>
+                        <input type="email" id="correo" name="correo" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula">Cédula:</label>
+                        <input type="text" id="cedula" name="cedula" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="text" id="telefono" name="telefono" class="form-control" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sabor Imperial. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

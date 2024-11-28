@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Inventario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Estilos heredados */
+        body {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: rgba(211, 47, 47, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand img {
+            max-width: 70px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffeb3b !important;
+        }
+
+        .container {
+            margin-top: 2rem;
+        }
+
+        .product-section {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 2rem;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .table th {
+            background-color: #d32f2f;
+            color: #fff;
+            text-align: center;
+        }
+
+        .table tbody tr:hover {
+            background-color: #ffe0b2;
+        }
+
+        .btn {
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #d32f2f;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/logo_negro.svg" alt="Logo">
+            </a>
+            <a class="navbar-brand" href="/gerente">
+                <i class="fas fa-boxes"></i> Gestión de Inventario
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/gerente/productos}">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/gerente/pedidos}">Pedidos</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/gerente/trabajadores}">Trabajadores</a></li>
+                    <li class="nav-item"><a class="nav-link active" th:href="@{/gerente/inventario}">Inventario</a></li>
+                    <a class="nav-link" href="/auth/logout">Cerrar Sesión</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de inventario -->
+    <div class="container">
+        <div class="product-section">
+            <h2 class="text-center mb-4">Gestión de Inventario</h2>
+            <table class="table table-striped table-hover mt-4">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Item</th>
+                        <th>Cantidad</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${inventario}">
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.item}"></td>
+                        <td th:text="${item.cantidad}"></td>
+                        <td>
+                            <span th:if="${item.faltante}" class="text-danger">Faltante</span>
+                            <span th:if="${!item.faltante}" class="text-success">Disponible</span>
+                        </td>
+                        <td>
+                            <a th:href="@{'/gerente/inventario/editar/' + ${item.id}}" class="btn btn-primary btn-sm">Editar</a>
+                            <form th:action="@{'/gerente/inventario/eliminar/' + ${item.id}}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="/gerente/index" class="btn btn-secondary">Volver al Panel</a>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Gestión de Inventario. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

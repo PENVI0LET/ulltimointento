@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor - Panel de Control</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff5722, #ff9800);
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: #d32f2f;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand img {
+            max-width: 70px;
+			
+        }
+
+        .navbar-nav .nav-link {
+            color: rgb(255, 255, 255) !important;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ff5722 !important;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgb(255, 255, 255,0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .dashboard-header p {
+            font-size: 1rem;
+        }
+
+        .dashboard-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .dashboard-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            color: #333;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-card h5 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .dashboard-card a {
+            text-decoration: none;
+            color: #ff5722;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .dashboard-card a:hover {
+            color: #d32f2f;
+        }
+
+        .dashboard-card .icon {
+            font-size: 4rem;
+            color: #ff9800;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #d32f2f;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 1rem 0;
+            max-height: 50px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+		/* Figuras decorativas */
+				.shape {
+				    position: absolute;
+				    background: rgba(255, 255, 255, 0.2); /* Transparencia para un efecto sutil */
+				    border-radius: 50%; /* Forma circular */
+				    z-index: 0; /* Detrás del contenido principal */
+				    pointer-events: none; /* Evita interferencias con las interacciones del usuario */
+				}
+
+				.shape.one {
+				    width: 150px;
+				    height: 150px;
+				    top: -50px; /* Coloca la figura en la parte superior izquierda */
+				    left: 20px; /* Ajusta la posición horizontal */
+				}
+
+
+
+				.shape.three {
+				    width: 350px;
+				    height: 350px;
+				    top: 10%; /* Coloca la figura cerca del centro superior */
+				    left: 81%; /* Ajusta la posición horizontal */
+				    transform: translate(-50%, -50%); /* Centra la figura en su punto */
+				}
+
+				.shape.four {
+				    width: 200px;
+				    height: 200px;
+				    top: 70%;
+				    left: 30%;
+				    transform: translate(-50%, -50%);
+				    background: rgba(255, 255, 255, 0.15); /* Más transparencia para un contraste diferente */
+				}
+
+				.shape.five {
+				    width: 250px;
+				    height: 250px;
+				    bottom: 20%;
+				    right: 10%;
+				    transform: translate(50%, 50%);
+				    background: rgba(255, 255, 255, 0.3); /* Un poco más opaco */
+				}
+
+				.shape.six {
+							        width: 100px;
+							        height: 100px;
+							        top: 75%;
+							        left: 15%;
+							    }
+
+							    .shape.seven {
+							        width: 220px;
+							        height: 220px;
+							        bottom: 5%;
+							        left: 40%;
+							    }
+
+							    .shape.eight {
+							        width: 180px;
+							        height: 180px;
+							        top: 60%;
+							        right: 10%;
+							    }
+
+							    .shape.nine {
+							        width: 250px;
+							        height: 250px;
+							        top: 20%;
+							        left: 5%;
+							    }
+
+							    .shape.ten {
+							        width: 200px;
+							        height: 200px;
+							        bottom: 65%;
+							        right: 40%;
+							    }
+
+				/* Ajusta los elementos principales para que queden encima */
+				.navbar, .hero, footer, .dashboard-header {
+				    position: relative;
+				    z-index: 10;
+				}
+
+				    </style>
+				</head>
+				<body>
+				     <!-- Figuras decorativas -->
+					<div class="shape one"></div>
+				    <div class="shape three"></div>
+				    <div class="shape five"></div>
+				    <div class="shape six"></div>
+				    <div class="shape seven"></div>
+				    <div class="shape eight"></div>
+				    <div class="shape nine"></div>
+				    <div class="shape ten"></div>
+
+					<!-- Barra de navegación -->
+					   <nav class="navbar navbar-expand-lg navbar-dark">
+					       <div class="container">
+					           <a class="navbar-brand" th:href="@{/}">
+					               <img src="/logo_negro.svg" alt="Logo del Restaurante">
+					           </a>
+							<a class="navbar-brand" th:href="@{/gestor/dashboard}">
+								<i class="fas fa-user-cog" style="color: white;"></i> Panel de Control Gestor
+								</a>
+									
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                         <a class="nav-link" th:href="@{/gestor/dashboard}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/gestor/productos}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/gestor/categorias}">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/gestor/inventario}">Inventario</a>
+                    </li>
+                    <li class="nav-item">
+						<a class="nav-link" th:href="@{/auth/logout}">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-header">
+        <h1>Panel de Control</h1>
+        <p>Administra los productos, categorías e inventario de tu negocio con facilidad.</p>
+    </div>
+
+    <div class="dashboard-content container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h5 class="card-title">Gestionar Productos</h5>
+                     <a class="nav-link" th:href="@{/gestor/productos}">Ir a Productos</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h5 class="card-title">Gestionar Categorías</h5>
+                    <a class="nav-link" th:href="@{/gestor/categorias}">Ir a Categorías</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card dashboard-card">
+                    <div class="icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h5 class="card-title">Inventario</h5>
+                    <a class="nav-link" th:href="@{/gestor/inventario}">Ir a Inventario</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sabor Imperial. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
